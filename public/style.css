@@ -1,0 +1,34 @@
+/* Custom CSS for additional styling */
+.list-none {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.list-none li {
+    margin-bottom: 1.5rem;
+}
+
+.option-container {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.option-square {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    border-radius: 4px;
+}
+
+.option-link {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Custom hover effect */
+.option-link:hover {
+    color: #4a90e2; /* Change color on hover */
+    transition: color 0.3s; /* Smooth transition */
+}

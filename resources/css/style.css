@@ -1,0 +1,20 @@
+.typewriter p {
+    border-right: 2px solid black; /* Simulates cursor */
+    overflow: hidden; /* Ensures no overflow */
+    white-space: nowrap; /* Prevents text from wrapping */
+    margin: 0;
+    padding: 10px;
+}
+
+/* Keyframes for the typewriter animation */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+.typewriter p::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    animation: typing 4s steps(40) forwards; /* Adjust duration as needed */
+}

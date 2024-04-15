@@ -1,0 +1,5 @@
+*
+!.gitignore
+{
+  "css.lint.unknownAtRules": "ignore"
+}
