@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 // // finally create dashboard
 Route::get('dashboard',[NoteController::class,'dashboard'])->name('note.panel');
-
+Route::get();
 Route::get('/note/{howwilldisplay}',[NoteController::class,'index'])->name('note.index'); #for show the all notes is the database
 Route::get('/notes',[NoteController::class,'allnotes'])->name('note.all');
 Route::get('/notes/get/filter',[NoteController::class,'getfilter'])->name('note.getfilter'); 
