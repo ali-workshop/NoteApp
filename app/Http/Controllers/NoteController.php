@@ -66,7 +66,7 @@ class NoteController extends Controller
         if($how_dispaly=="order_pages_UD"){$notes=Note::query()->orderBy('updated_at','desc')->paginate(15); #this for display all in pages and in asc order
         
         }
-        
+        // dd($notes);
         
         return view('note.index',['notes'=>$notes]);
     }
@@ -200,6 +200,33 @@ class NoteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
+
+     public function getdelet(){
+        
+        return view('note.get_delet');
+
+
+     }
+
+     public function notetodelet(Request  $request){
+
+        $text=$request->validate([
+
+            'text'=>['string','required']
+
+        ]);
+
+        $notes=Note::where('note','LIKE','%'.$text['text'].'%')->get();
+        session()->flash('message', 'the Notes match this title are below free to delet any one you need.....');
+        return view('note.delet_via_title', ["notes" => $notes]);
+
+
+    }
+
+
+
+
     public function destroy(Note $note)
     {
         $note->delete();

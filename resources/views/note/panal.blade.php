@@ -26,7 +26,7 @@
                     <a href={{route('note.get.id')}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Continue write with specific Note</a><br><br>
                 </li>
                 <li class="mb-6">
-                    <a href="#" class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Delete note</a><br><br>
+                    <a href={{route('note.get.destroy')}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Delete note</a><br><br>
                 </li>
                 <li class="mb-6">
                     <a href="#" class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Search for note using tite</a><br><br>
