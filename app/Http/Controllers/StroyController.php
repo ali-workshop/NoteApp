@@ -11,11 +11,17 @@ class StroyController extends Controller
 {
    public function  test(){
     $service = new LaravelPython();
-    $result = $service->run('../data.py');
+    $text = $service->run('../data.py');
 // dd($result);
 
-    return view('story',['story'=>$result]);
+    return view('story',['text'=>$text]);
 
    }
+
+   public function showText()
+{
+    $text = "Your text goes here...";
+    return view('story', compact('text'));
+}
     
 }

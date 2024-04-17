@@ -14,7 +14,7 @@
                     <a href={{route('note.index',['howwilldisplay'=>'all'])}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Press to show all the notes</a><br><br>
                 </li>
                 <li class="mb-6">
-                    <a href={{route("note.get.id")}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Press to edit specific Note by title</a><br><br>
+                    <a href={{route("note.get.title")}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Press to edit specific Note</a><br><br>
                 </li>
                 <li class="mb-6">
                     <a href={{route("note.all")}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Press to show all (filter) and edit</a><br><br>
@@ -23,13 +23,13 @@
                     <a href={{route("note.create")}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Create new Note</a><br><br>
                 </li>
                 <li class="mb-6">
-                    <a href={{route('note.get.id')}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Continue write with specific Note</a><br><br>
+                    <a href={{route('note.get.title')}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Continue write with specific Note</a><br><br>
                 </li>
                 <li class="mb-6">
                     <a href={{route('note.get.destroy')}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Delete note</a><br><br>
                 </li>
                 <li class="mb-6">
-                    <a href="#" class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Search for note using tite</a><br><br>
+                    <a href="{{route('note.get.notes.title')}} " class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Search for note using title</a><br><br>
                 </li>
                 <li class="mb-6">
                     <a href="{{ route('note.get.text') }}" class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Search for note using some text</a><br><br>

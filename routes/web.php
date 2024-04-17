@@ -23,20 +23,17 @@ Route::get('/create/note',[NoteController::class,'create'])->name('note.create')
 Route::post('/note/store',[NoteController::class,'store'])->name('note.store');
 Route::get('/create/note/via/Ai',[NoteController::class,'createAi'])->name('note.create.ai');
 Route::get('/note/show/{note}',[NoteController::class,'show'])->name('note.show');
-Route::get('/get/note/via/id/',[NoteController::class,'get_via_id'])->name('note.get.id');
-Route::get('/edit/note/via/id/',[NoteController::class,'edit_via_id'])->name('note.edit.via.id');
+Route::get('/get/note/via/title/',[NoteController::class,'get_via_title'])->name('note.get.title');
+Route::get('/edit/note/via/title/',[NoteController::class,'edit_via_title'])->name('note.edit.via.title');
 Route::get('note/edit/{note}',[NoteController::class,'edit'])->name('note.edit');
+Route::get('search/results',[NoteController::class,'search'])->name('note.search');
 Route::put('note/update/{note}',[NoteController::class,'update'])->name('note.update');
 Route::get('unvalid/note',[NoteController::class,'unvalid'])->name('note.unvalid');
 Route::get('note/to/delete',[NoteController::class,'getdelet'])->name('note.get.destroy');
 Route::get('note/delete/via/title',[NoteController::class,'notetodelet'])->name('note.get.destroy.title');
-
+Route::get('get/all/notes/match/title',[NoteController::class,'getnotes'])->name('note.get.notes.title');
 Route::delete('note/delete/{note}',[NoteController::class,'destroy'])->name('note.destroy');
-# instead of the above line i can use better way and make it in one line
-// Route::resource('note',NoteController::class);
 
-// make title for each note 
-// make the filter by the titles names  
 
 Route::get('story',[StroyController::class,'test']);
 

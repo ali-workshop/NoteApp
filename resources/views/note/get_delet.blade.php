@@ -4,7 +4,7 @@
         <form action='{{route("note.get.destroy.title")}}' method="GET" class="note">
             @csrf
             @method("GET")
-            <textarea  name="text" rows="10" class="note-body" placeholder="Enter title  of the note u want to delet it."></textarea>
+            <textarea  name="text" rows="1" class="note-body" placeholder="Enter title  of the note u want to delet it."></textarea>
             
             <div class="note-buttons">
                 <a href="{{ route('note.index',['howwilldisplay'=>'order_pages_UD']) }}" class="note-cancel-button">Cancel</a>

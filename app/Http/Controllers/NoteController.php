@@ -23,27 +23,28 @@ class NoteController extends Controller
 
    }
 
-   public function get_via_id(){
+   public function get_via_title(){
 
-        return view('note.get-id');
+        return view('note.get-title');
 
 
    }
 
-   public function edit_via_id(Request $request){
+   public function edit_via_title(Request $request){
  
-    $id=$request->validate([
+    $title=$request->validate([
 
-'id' => ['string']
+'title' => ['string']
  ]);
     //  dd($id);
 
 
-
-    $note=Note::find($id);
-    
+    //    dd($title); 
+    $note=Note::query()->where('title','LIKE','%'.$title['title'].'%')->get();
+   
+    // dd($note);
     if ($note->count() === 0) {
-        return view('note.unvalid-id');  
+        return view('note.unvalid-title');  
         // dd($note);
    }
         
@@ -51,10 +52,18 @@ class NoteController extends Controller
     // dd($note[0]);
     // dd($note[0]->note);
     
-    return view('note.edit-id',['note'=>$note[0]]);
+    return view('note.edit-note-based-title',['note'=>$note[0]]);
 
 
    }
+
+public function getnotes(){
+
+    return view('note.getnote');
+
+
+}
+
     public function index($how_dispaly)
     {
         if ($how_dispaly=="all"){$notes=Note::all();}#this is for display the all notes
@@ -77,6 +86,15 @@ return view('note.sort');
 
 
 
+}
+
+
+
+public function search(Request $request){
+
+$title=$request->validate(['title'=>['string','required']]);
+$notes=Note::where('title','LIKE','%'.$title['title'].'%')->get();
+return view('note.index',['notes'=>$notes]);
 }
     public function sort($howtosort){
 
@@ -169,7 +187,7 @@ return view('note.sort');
     public function store(Request $request)
     {
         $note=$request->validate([
-
+            'title'=>['string','required'],
             'note'=>['string','required'],
 
         ]);
@@ -247,7 +265,7 @@ return view('note.sort');
 
         ]);
 
-        $notes=Note::where('note','LIKE','%'.$text['text'].'%')->get();
+        $notes=Note::where('title','LIKE','%'.$text['text'].'%')->get();
         session()->flash('message', 'the Notes match this title are below free to delet any one you need.....');
         return view('note.delet_via_title', ["notes" => $notes]);
 

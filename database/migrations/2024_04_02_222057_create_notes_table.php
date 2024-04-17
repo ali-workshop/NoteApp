@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->text('title')->default('alolaaal is the best');
+            $table->text('title')->nullable();
             $table->longText('note');
             $table->timestamps();
         });
