@@ -12,6 +12,8 @@ Route::get('/', function () {
 // // finally create dashboard
 Route::get('dashboard',[NoteController::class,'dashboard'])->name('note.panel');
 Route::get('/note/{howwilldisplay}',[NoteController::class,'index'])->name('note.index'); #for show the all notes is the database
+Route::get('/note/get/sort',[NoteController::class,'getsort'])->name('note.get.sort');
+Route::get('/note/sort/via/{howtosort}',[NoteController::class,'sort'])->name('note.sort');
 Route::get('/notes',[NoteController::class,'allnotes'])->name('note.all');
 Route::get('/notes/get/filter',[NoteController::class,'getfilter'])->name('note.getfilter'); 
 Route::get('/notes/filtering',[NoteController::class,'filter'])->name('note.filter');
@@ -25,7 +27,7 @@ Route::get('/get/note/via/id/',[NoteController::class,'get_via_id'])->name('note
 Route::get('/edit/note/via/id/',[NoteController::class,'edit_via_id'])->name('note.edit.via.id');
 Route::get('note/edit/{note}',[NoteController::class,'edit'])->name('note.edit');
 Route::put('note/update/{note}',[NoteController::class,'update'])->name('note.update');
-
+Route::get('unvalid/note',[NoteController::class,'unvalid'])->name('note.unvalid');
 Route::get('note/to/delete',[NoteController::class,'getdelet'])->name('note.get.destroy');
 Route::get('note/delete/via/title',[NoteController::class,'notetodelet'])->name('note.get.destroy.title');
 
@@ -37,3 +39,6 @@ Route::delete('note/delete/{note}',[NoteController::class,'destroy'])->name('not
 // make the filter by the titles names  
 
 Route::get('story',[StroyController::class,'test']);
+
+
+// paginations

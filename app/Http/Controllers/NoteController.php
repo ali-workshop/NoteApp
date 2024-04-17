@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
 {
@@ -57,9 +58,7 @@ class NoteController extends Controller
     public function index($how_dispaly)
     {
         if ($how_dispaly=="all"){$notes=Note::all();}#this is for display the all notes
-         
-       if($how_dispaly=="similaralice"){ $notes=Note::where('note',"LIKE",'%alic%')->get(); } # this for diplay all notes that contain the alic name in it
-
+     
        if($how_dispaly=="order_pages_CA"){$notes=Note::query()->orderBy('created_at','asc')->paginate(15);}
         if($how_dispaly=="order_pages_CD"){$notes=Note::query()->orderBy('created_at','desc')->paginate(15);}
             if($how_dispaly=="order_pages_UA"){$notes=Note::query()->orderBy('updated_at','asc')->paginate(15);}
@@ -70,6 +69,37 @@ class NoteController extends Controller
         
         return view('note.index',['notes'=>$notes]);
     }
+
+public function getsort(){
+
+
+return view('note.sort');
+
+
+
+}
+    public function sort($howtosort){
+
+        
+        if ($howtosort=="all"){$notes=Note::all();}
+         
+       
+
+       if($howtosort=="order_pages_CA"){$notes=Note::query()->orderBy('created_at','asc')->paginate(15);}
+        if($howtosort=="order_pages_CD"){$notes=Note::query()->orderBy('created_at','desc')->paginate(15);}
+            if($howtosort=="order_pages_UA"){$notes=Note::query()->orderBy('updated_at','asc')->paginate(15);}
+        if($howtosort=="order_pages_UD"){$notes=Note::query()->orderBy('updated_at','desc')->paginate(15); #this for display all in pages and in asc order
+        
+        }
+        if($howtosort=='small_notes'){ $notes = Note::orderBy(DB::raw('LENGTH(note)'), 'asc')->get();}
+        if($howtosort=='larg_notes'){ $notes = Note::orderBy(DB::raw('LENGTH(note)'), 'desc')->get();}
+        if($howtosort=='notes_start_A'){$notes = Note::where('note', 'LIKE', 'A%')->get();}
+        if($howtosort=='notes_contain_alice_words'){$notes=Note::where('note',"LIKE",'%lil%')->get(); }
+        if($howtosort=='happy_notes'){$notes = Note::where('note', 'LIKE', '%Hap%')->get();}
+
+        return view('note.index',['notes'=>$notes]);
+    }
+
 
     public function allnotes(){
 
@@ -231,6 +261,14 @@ class NoteController extends Controller
     {
         $note->delete();
         return to_route("note.index",['howwilldisplay'=>'order_pages_UD'])->with("message","the note deleted successfully");
+
+    }
+
+
+    public function unvalid(){
+
+        return view('note.unvalid-choice');
+
 
     }
 }

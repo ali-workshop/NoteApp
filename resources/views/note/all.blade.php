@@ -9,7 +9,7 @@
         <div><a href="{{ route('note.getfilter') }}" class="new-note-btn">
             Filter By piece of text
         </a></div>
-        <div><a href="{{ route('note.panel') }}" class="new-note-btn">
+        <div><a href="{{ route('note.get.sort') }}" class="new-note-btn">
             Different show (Different Sorting 😎)
         </a></div>
         <div><a href="{{ route('note.panel') }}" class="new-note-btn">

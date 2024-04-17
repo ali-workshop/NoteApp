@@ -4,7 +4,7 @@
         <a href="{{ route('note.create') }}" class="new-note-btn">
             New Note
         </a>
-        <div><a href="{{ route('note.panel') }}" class="new-note-btn">
+        <div><a href="{{ route('note.get.sort') }}" class="new-note-btn">
             Different show (Different Sorting 😎)
         </a></div>
         <a href="{{ route('note.panel') }}" class="new-note-btn">
