@@ -69,7 +69,7 @@ public function getnotes(){
 
     public function index($how_dispaly)
     {
-        if ($how_dispaly=="all"){$notes=Note::all();}#this is for display the all notes
+        if ($how_dispaly=="all"){$notes=Note::paginate(15);}#this is for display the all notes
      
        if($how_dispaly=="order_pages_CA"){$notes=Note::query()->orderBy('created_at','asc')->paginate(15);}
         if($how_dispaly=="order_pages_CD"){$notes=Note::query()->orderBy('created_at','desc')->paginate(15);}
@@ -77,7 +77,7 @@ public function getnotes(){
         if($how_dispaly=="order_pages_UD"){$notes=Note::query()->orderBy('updated_at','desc')->paginate(15); #this for display all in pages and in asc order
         
         }
-        // dd($notes);
+        // dd($notes[0]);
         
         return view('note.index',['notes'=>$notes]);
     }
@@ -96,13 +96,13 @@ return view('note.sort');
 public function search(Request $request){
 
 $title=$request->validate(['title'=>['string','required']]);
-$notes=Note::where('title','LIKE','%'.$title['title'].'%')->get();
+$notes=Note::where('title','LIKE','%'.$title['title'].'%')->paginate(15);
 return view('note.index',['notes'=>$notes]);
 }
     public function sort($howtosort){
 
         
-        if ($howtosort=="all"){$notes=Note::all();}
+        if ($howtosort=="all"){$notes=Note::paginate(15);}
          
        
 
@@ -117,7 +117,7 @@ return view('note.index',['notes'=>$notes]);
         if($howtosort=='notes_start_A'){$notes = Note::where('note', 'LIKE', 'A%')->get();}
         if($howtosort=='notes_contain_alice_words'){$notes=Note::where('note',"LIKE",'%lil%')->get(); }
         if($howtosort=='happy_notes'){$notes = Note::where('note', 'LIKE', '%Hap%')->get();}
-
+        
         return view('note.index',['notes'=>$notes]);
     }
 
@@ -141,7 +141,7 @@ return view('note.index',['notes'=>$notes]);
 
         ]);
 
-        $notes=Note::where('note','LIKE','%'.$filter['filter'].'%')->get();
+        $notes=Note::where('note','LIKE','%'.$filter['filter'].'%')->paginate(15);
         session()->flash('message', 'Your Notes Filted Succesfully');
         return view('note.all', ["notes" => $notes]);
 
@@ -160,7 +160,7 @@ return view('note.index',['notes'=>$notes]);
 
         ]);
 
-        $notes=Note::where('note','LIKE','%'.$text['text'].'%')->get();
+        $notes=Note::where('note','LIKE','%'.$text['text'].'%')->paginate(15);
         session()->flash('message', 'the Notes contain this beice of text Filted Succesfully');
         return view('note.all', ["notes" => $notes]);
 
@@ -272,7 +272,7 @@ return view('note.index',['notes'=>$notes]);
 
         ]);
 
-        $notes=Note::where('title','LIKE','%'.$text['text'].'%')->get();
+        $notes=Note::where('title','LIKE','%'.$text['text'].'%')->paginate(15);
         session()->flash('message', 'the Notes match this title are below free to delet any one you need.....');
         return view('note.delet_via_title', ["notes" => $notes]);
 

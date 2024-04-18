@@ -3,42 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
-    <link rel="stylesheet" href="/styles.css"> <!-- Link to your external CSS file -->
+    <title>Sticker Example</title>
+    <style>
+        .sticker-container {
+            margin-top: 70px; /* Add margin to the top */
+            display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .sticker {
+            width: 100%; /* Make each sticker fill the available width */
+            height: 200px;
+            border: 2px solid black;
+            border-radius: 0;
+            background: rgb(234, 0, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <x-layout>
-        <div class="max-w-3xl mx-auto px-4 py-8">
-            <ul class="list-none">
-                <li class="mb-6">
-                    <a href={{route('note.index',['howwilldisplay'=>'all'])}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Press to show all the notes</a><br><br>
-                </li>
-                <li class="mb-6">
-                    <a href={{route("note.get.title")}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Press to edit specific Note</a><br><br>
-                </li>
-                <li class="mb-6">
-                    <a href={{route("note.all")}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Press to show all (filter) and edit</a><br><br>
-                </li>
-                <li class="mb-6">
-                    <a href={{route("note.create")}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Create new Note</a><br><br>
-                </li>
-                <li class="mb-6">
-                    <a href={{route('note.get.title')}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Continue write with specific Note</a><br><br>
-                </li>
-                <li class="mb-6">
-                    <a href={{route('note.get.destroy')}} class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Delete note</a><br><br>
-                </li>
-                <li class="mb-6">
-                    <a href="{{route('note.get.notes.title')}} " class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Search for note using title</a><br><br>
-                </li>
-                <li class="mb-6">
-                    <a href="{{ route('note.get.text') }}" class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Search for note using some text</a><br><br>
-                </li>
-                <li class="mb-6">
-                    <a href="{{route('note.create.ai')}}" class="block text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Generate note with Ai</a><br><br>
-                </li>
-                 </ul>
+    <div class="sticker-container">
+        <div class="sticker orange">
+            <a href="{{route('note.index',['howwilldisplay'=>'all'])}}" class="link">Press to show all the notes</a>
         </div>
-    </x-layout>
+        <div class="sticker orange">
+            <a href="{{route("note.get.title")}}" class="link">Press to edit specific Note</a>
+        </div>
+        <div class="sticker orange">
+            <a href="{{route("note.all")}}" class="link">Press to show all (filter) and edit</a>
+        </div>
+        <div class="sticker orange">
+            <a href="{{route("note.create")}}" class="link">Create new Note</a>
+        </div>
+        <div class="sticker orange">
+            <a href="{{route('note.get.title')}}" class="link">Continue write with specific Note</a>
+        </div>
+        <div class="sticker orange">
+            <a href="{{route('note.get.destroy')}}" class="link">Delete note</a>
+        </div>
+        <div class="sticker orange">
+            <a href="{{route('note.get.notes.title')}} " class="link">Search for note using title</a>
+        </div>
+        <div class="sticker orange">
+            <a href="{{ route('note.get.text') }}" class="link">Search for note using some text</a>
+        </div>
+        <div class="sticker orange">
+            <a href="{{route('note.create.ai')}}" class="link">Generate note with Ai</a>
+        </div>
+        
+    </div>
 </body>
 </html>
