@@ -35,7 +35,8 @@ Route::get('get/all/notes/match/title',[NoteController::class,'getnotes'])->name
 Route::delete('note/delete/{note}',[NoteController::class,'destroy'])->name('note.destroy');
 
 
-Route::get('story',[StroyController::class,'test']);
+
+
 
 
 // paginations

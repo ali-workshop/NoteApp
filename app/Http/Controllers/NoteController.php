@@ -6,6 +6,9 @@ use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use robertogallea\LaravelPython\Services\LaravelPython;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+
 class NoteController extends Controller
 {
     /**
@@ -178,9 +181,13 @@ return view('note.index',['notes'=>$notes]);
     
     public function createAi()
     {
-        $note='this is ai';
-        return view('note.create_ai',['note'=>$note]);
+        $service = new LaravelPython();
+        $result = $service->run('../data.py');
+    // dd($result);
+    
+        return view('note.story',['text'=>$result]);
     }
+   
     /**
      * Store a newly created resource in storage.
      */
